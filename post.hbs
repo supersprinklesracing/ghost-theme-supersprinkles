@@ -119,4 +119,7 @@ into the {body} tag of the default.hbs template --}}
     {{/get}}
 {{/if}}
 
+{{#contentFor "edit-link"}}
+<a href="/ghost/#/editor/post/{{id}}">Edit</a>
+{{/contentFor}}
 {{/post}}
