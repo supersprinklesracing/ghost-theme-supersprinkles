@@ -2,19 +2,17 @@
 <aside class="gh-post-upgrade-cta">
     <div class="gh-post-upgrade-cta-content" style="background-color: {{@site.accent_color}}">
         {{#has visibility="paid"}}
-            <h2>This {{#is "page"}}page{{else}}post{{/is}} is for paying subscribers only</h2>
+            <h2>This {{#is "page"}}page{{else}}post{{/is}} is for paying members only</h2>
         {{/has}}
         {{#has visibility="members"}}
-            <h2>This {{#is "page"}}page{{else}}post{{/is}} is for subscribers only</h2>
+            <h2>This {{#is "page"}}page{{else}}post{{/is}} is for members only</h2>
         {{/has}}
         {{#has visibility="tiers"}}
-            <h2>This {{#is "page"}}page{{else}}post{{/is}} is for subscribers on the {{tiers}} only </h2>
+            <h2>This {{#is "page"}}page{{else}}post{{/is}} is for members on the {{tiers}} only </h2>
         {{/has}}
-        {{#if @member}}
-            <a class="gh-btn" data-portal="account/plans" style="color:{{@site.accent_color}}">Upgrade your account</a>
-        {{else}}
-            <a class="gh-btn" data-portal="signup" style="color:{{@site.accent_color}}">Subscribe now</a>
-            <p><small>Already have an account? <a data-portal="signin">Sign in</a></small></p>
-        {{/if}}
+        {{#unless @member}}
+            <a class="gh-btn" data-portal="signin" style="color:{{@site.accent_color}}">Sign in</a>
+            <p><small>Learn more <a href="/about">about</a> our team</small></p>
+        {{/unless}}
     </div>
 </aside>
