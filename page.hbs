@@ -3,9 +3,10 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
 
-
 {{#post}}
 {{!-- Everything inside the #post block pulls data from the page --}}
+
+{{> "redirect-about"}}
 
 <main id="site-main" class="site-main">
 <article class="article {{post_class}}">
