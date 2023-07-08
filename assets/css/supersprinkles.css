@@ -1,0 +1,22 @@
+/* Social Media icons: https://ghost.org/tutorials/add-social-media-icons/?_ga=2.68909970.2077309190.1688546231-1313046584.1688546231 */
+.gh-head-menu .nav-instagram a,
+.gh-head-menu .nav-slack a {
+    font-size: 0 !important;
+}
+
+.gh-head-menu .nav-instagram a::before,
+.gh-head-menu .nav-slack a::before {
+    font-family: "Font Awesome 6 Brands";
+    display: inline-block;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+.gh-head-menu .nav-instagram a::before {content: "\f16d"}
+.gh-head-menu .nav-slack a::before {content: "\f198"}
+
+/* --- End --- */
