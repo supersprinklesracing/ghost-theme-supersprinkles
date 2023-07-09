@@ -39,13 +39,17 @@ into the {body} of the default.hbs template --}}
 
 {{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
-<div class="inner posts">
-
-    <div class="post-feed">
-        {{> "posts-visibility"}}
-    </div>
-
-    {{pagination}}
-
+<div class="columns">
+   <div class="column column-1">
+        <div class="inner posts">
+            <div class="post-feed">
+                {{> "posts-visibility"}}
+            </div>
+            {{pagination}}
+        </div>
+   </div>
+   <div class="column column-2">
+        {{> "sidebar"}}
+  </div>
 </div>
 </main>
