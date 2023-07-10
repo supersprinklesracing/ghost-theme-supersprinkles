@@ -64,3 +64,13 @@
     backdrop-filter: blur(3px);
 }
 /* --- End --- */
+
+/** Hack to make the menu burger icon white on dark backgrounds. */
+@media (prefers-color-scheme: dark) {
+    .has-cover .gh-burger::before,
+    .has-cover .gh-burger::after {
+        color: gray;
+        background-color: gray;
+    }
+}
+/* --- End --- */
