@@ -86,9 +86,54 @@
         </div>
     </header>
 
+    {{#is "index"}}
+    <div class="site-header-content outer{{#match @custom.header_style "Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style "Hidden"}} no-content{{/match}}{{/unless}}">
+    
+        {{#if @custom.show_publication_cover}}
+            {{#if @site.cover_image}}
+                {{!-- This is a responsive image, it loads different sizes depending on device
+                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+                <img class="site-header-cover"
+                    srcset="{{img_url @site.cover_image size="s"}} 300w,
+                            {{img_url @site.cover_image size="m"}} 600w,
+                            {{img_url @site.cover_image size="l"}} 1000w,
+                            {{img_url @site.cover_image size="xl"}} 2000w"
+                    sizes="100vw"
+                    src="{{img_url @site.cover_image size="xl"}}"
+                    alt="{{@site.title}}"
+                />
+            {{/if}}
+        {{/if}}
+    
+        {{#match @custom.header_style "!=" "Hidden"}}
+            <div class="site-header-inner inner">
+                {{#match @custom.navigation_layout "Logo on cover"}}
+                    {{#if @site.logo}}
+                        <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+                    {{else}}
+                        <h1 class="site-title">{{@site.title}}</h1>
+                    {{/if}}
+                {{/match}}
+                {{#if @site.description}}
+                    <p class="site-description">{{@site.description}}</p>
+                {{/if}}
+            </div>
+        {{/match}}
+    </div>
+    {{/is}}
+
     <div class="site-content">
-        {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
-        {{{body}}}
+        <div class="columns">
+           <div class="column column-1">
+                {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
+                <main id="site-main" class="site-main">
+                {{{body}}}
+		</main>
+           </div>
+           <div class="column column-2">
+                {{> "sidebar"}}
+          </div>
+        </div>
     </div>
 
     {{!-- The global footer at the very bottom of the screen --}}
