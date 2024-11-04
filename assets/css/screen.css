@@ -844,7 +844,7 @@ production stylesheet in assets/built/screen.css
     display: grid;
     gap: 4.8vmin 4vmin;
     grid-template-columns: repeat(6, 1fr);
-    padding: max(4.8vmin, 36px) 0 0;
+    padding: max(4.8vmin, 36px) 4vmin 0;
 }
 
 :is(.tag-template, .author-template) .post-feed {
