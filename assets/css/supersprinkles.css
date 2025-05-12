@@ -56,11 +56,21 @@
     padding-bottom: 2em;
 }
 
+.site-subtitle {
+  display: inline-block;
+  z-index: 10;
+  max-width: 960px;
+  font-size: 8rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+
 /* --- End --- */
 
 /* Scrim the menu for the main page header. */
 #gh-head {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: "#BAA2F6";
     backdrop-filter: blur(3px);
 }
 /* --- End --- */
