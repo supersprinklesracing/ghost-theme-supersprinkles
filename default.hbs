@@ -66,15 +66,21 @@
 
             <nav class="gh-head-menu">
                 {{navigation}}
-                {{#match @custom.navigation_layout "Stacked"}}
-                    <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-                {{/match}}
+                {{#unless @site.members_enabled}}
+                    {{#match @custom.navigation_layout "Stacked"}}
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
+                    {{/match}}
+                {{/unless}}
             </nav>
 
             <div class="gh-head-actions">
-                {{^match @custom.navigation_layout "Stacked"}}
+                {{#unless @site.members_enabled}}
+                    {{^match @custom.navigation_layout "Stacked"}}
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
+                    {{/match}}
+                {{else}}
                     <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
-                {{/match}}
+                {{/unless}}
             </div>
         </div>
     </header>

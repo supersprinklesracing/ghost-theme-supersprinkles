@@ -21,25 +21,31 @@
 
 /* --- End --- */
 
-/* Two columns: Modern Grid Layout */
+/* Two columns: https://devpractical.com/two-column-layout-html-css/#:~:text=2.%20Create%20Sidebar%20Layout%3A%20Two%20column%20layout */
 .columns {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    gap: max(4vmin, 20px);
-    width: 100%;
+    Width: 100%;
 }
 
 .column-1 {
-    min-width: 0; /* Prevents grid blowout with large content */
+    width: 70%;
+    float: left;
 }
 
 .column-2 {
-    min-width: 0;
+    width: 30%;
+    float: left;
+    padding: 0 max(4vmin, 20px)
+}
+
+.columns {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 @media (max-width: 1200px) {
-    .columns {
-        grid-template-columns: 1fr;
+    .column-1 {
+        width: 100%;
     }
     .column-2 {
         display: none;
@@ -64,7 +70,6 @@
 
 /* Scrim the menu for the main page header. */
 #gh-head {
-    background-color: #BAA2F6;
     backdrop-filter: blur(3px);
 }
 /* --- End --- */
@@ -78,11 +83,3 @@
     }
 }
 /* --- End --- */
-
-/* Responsive Video Embeds (Replacing FitVids) */
-.gh-content iframe,
-.gh-content video {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-}
