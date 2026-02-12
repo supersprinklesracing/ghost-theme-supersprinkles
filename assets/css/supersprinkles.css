@@ -64,7 +64,7 @@
 
 /* Scrim the menu for the main page header. */
 #gh-head {
-    background-color: "#BAA2F6";
+    background-color: #BAA2F6;
     backdrop-filter: blur(3px);
 }
 /* --- End --- */
