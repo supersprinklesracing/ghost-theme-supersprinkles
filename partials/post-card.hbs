@@ -14,6 +14,22 @@ which templates loop over to generate a list of posts. --}}
     {{/match}}
     {{#unless access}} post-access-{{visibility}}{{/unless}}">
 
+    {{!-- Instagram-style Header --}}
+    <div class="insta-header">
+        {{#foreach authors}}
+        <a href="{{url}}" class="insta-author-link">
+            {{#if profile_image}}
+                <img class="insta-avatar" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
+            {{else}}
+                <div class="insta-avatar-placeholder">{{> "icons/avatar"}}</div>
+            {{/if}}
+            <span class="insta-username">{{name}}</span>
+        </a>
+        {{/foreach}}
+        <span class="insta-meta-dot">&bull;</span>
+        <time class="insta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D"}}</time>
+    </div>
+
     {{#if feature_image}}
     <a class="post-card-image-link" href="{{url}}">
 
@@ -50,15 +66,7 @@ which templates loop over to generate a list of posts. --}}
 
         <a class="post-card-content-link" href="{{url}}">
             <header class="post-card-header">
-                <div class="post-card-tags">
-                    {{#primary_tag}}
-                        <span class="post-card-primary-tag">{{name}}</span>
-                    {{/primary_tag}}
-                    {{#if featured}}
-                        <span class="post-card-featured">{{> "icons/fire"}} Featured</span>
-                    {{/if}}
-                </div>
-                <h2 class="post-card-title">
+                <!-- <h2 class="post-card-title">
                     {{#unless access}}
                     {{^has visibility="public"}}
                         {{#unless feature_image}}
@@ -67,14 +75,25 @@ which templates loop over to generate a list of posts. --}}
                     {{/has}}
                     {{/unless}}
                     {{title}}
-                </h2>
+                </h2> -->
             </header>
-            {{#if excerpt}}
-                <div class="post-card-excerpt">{{excerpt}}</div>
+            <div class="insta-caption-container">
+                <span class="insta-caption-username">{{primary_author.name}}</span>
+                {{#if excerpt}}
+                    <span class="post-card-excerpt">{{excerpt words="60"}}</span>
+                {{/if}}
+            </div>
+            
+            {{#if tags}}
+            <div class="insta-tags">
+                {{#foreach tags}}
+                    <span class="insta-tag">#{{name}}</span>
+                {{/foreach}}
+            </div>
             {{/if}}
         </a>
 
-        <footer class="post-card-meta">
+        <!-- <footer class="post-card-meta">
             <time class="post-card-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
             {{#if reading_time}}
                 <span class="post-card-meta-length">{{reading_time}}</span>
@@ -82,7 +101,7 @@ which templates loop over to generate a list of posts. --}}
             {{#if @site.comments_enabled}}
                 {{comment_count}}
             {{/if}}
-        </footer>
+        </footer> -->
 
     </div>
 

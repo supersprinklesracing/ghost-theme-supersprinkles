@@ -83,3 +83,129 @@
     }
 }
 /* --- End --- */
+
+/* --- Instagram-style Feed Customizations --- */
+
+/* Adjust Single Post spacing */
+.article-header {
+    padding-bottom: 2rem;
+}
+
+.article-byline {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Ensure the byline looks good without the title above it */
+.article-byline-content {
+    align-items: center;
+}
+
+/* --- Instagram-style Post Card --- */
+
+.insta-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 1.4rem;
+}
+
+.insta-author-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--color-darkgrey);
+}
+
+.insta-author-link:hover {
+    opacity: 1;
+    text-decoration: none;
+}
+
+.insta-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.insta-avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-lightgrey);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.insta-avatar-placeholder svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-midgrey);
+}
+
+.insta-meta-dot {
+    margin: 0 6px;
+    color: var(--color-secondary-text);
+}
+
+.insta-date {
+    color: var(--color-secondary-text);
+    font-size: 1.3rem;
+}
+
+/* Override existing post-card-image-link spacing */
+.post-card-image-link {
+    margin-bottom: 12px;
+    border-radius: 4px; /* Slight rounding like Insta */
+    overflow: hidden;
+}
+
+/* Make image cover full width effectively */
+.post-card-image-link::after {
+    padding-bottom: 100%; /* Make square by default like Insta? Or maybe just adapt to image */
+}
+/* If we want natural aspect ratio, we'd need to remove the padding-bottom hack or adjust classes. 
+   But Ghost's Casper uses this padding hack for consistent cards. 
+   Let's stick to the existing image behavior for now but remove the margin bottom. 
+*/
+
+.insta-caption-container {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--color-darkgrey);
+    margin-bottom: 8px;
+}
+
+.insta-caption-username {
+    font-weight: 700;
+    margin-right: 6px;
+    color: var(--color-darkgrey);
+}
+
+.post-card-excerpt {
+    display: inline; /* Make excerpt inline with username */
+    font-size: 1.4rem; /* Reset size to match caption style */
+    -webkit-line-clamp: unset; /* Remove clamp here, let it flow or clamp differently */
+    margin-top: 0;
+    color: var(--color-darkgrey);
+}
+
+.insta-tags {
+    margin-top: 8px;
+    font-size: 1.3rem;
+    color: var(--ghost-accent-color);
+}
+
+.insta-tag {
+    margin-right: 6px;
+}
+
+/* Hide original tags and footer */
+.post-card-tags {
+    display: none;
+}
