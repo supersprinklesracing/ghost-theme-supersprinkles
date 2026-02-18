@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibrant Modernization Preview</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="assets/built/screen.css" />
+    <link rel="stylesheet" type="text/css" href="assets/built/supersprinkles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* Mock Ghost-injected styles/vars if needed */
+        :root {
+            --ghost-accent-color: #ec4899;
+        }
+    </style>
+</head>
+<body class="home-template has-sans-body">
+<div class="viewport">
+
+    <header id="gh-head" class="gh-head outer">
+        <div class="gh-head-inner inner">
+            <div class="gh-head-brand">
+                <a class="gh-head-logo" href="#">
+                    Vibrant Ghost
+                </a>
+            </div>
+            <nav class="gh-head-menu">
+                <ul class="nav">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Collection</a></li>
+                    <li><a href="#">Author</a></li>
+                </ul>
+            </nav>
+            <div class="gh-head-actions">
+                <button class="gh-head-button">Subscribe</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-content">
+        <div class="inner" style="margin-top: 40px;">
+            <div class="columns">
+               <div class="column column-1">
+                    <main id="site-main" class="site-main">
+                        <div class="post-feed">
+                            <!-- Mock Post Card 1 -->
+                            <article class="post-card">
+                                <div class="insta-header">
+                                    <div class="insta-author-wrapper">
+                                        <a href="#" class="insta-author-link">
+                                            <div class="insta-avatar-placeholder">
+                                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                            </div>
+                                            <span class="insta-username">Jamie Larson</span>
+                                        </a>
+                                        <span class="insta-meta-dot">&bull;</span>
+                                        <time class="insta-date">Oct 12</time>
+                                    </div>
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+
+                                <a class="post-card-image-link" href="#">
+                                    <img class="post-card-image" style="position:relative; width:100%; height:auto; display:block; background:#eef2ff;" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Gradient Abstract" />
+                                </a>
+
+                                <div class="post-card-content">
+                                    <a class="post-card-content-link" href="#">
+                                        <div class="insta-caption-container">
+                                            <span class="insta-caption-username">Jamie Larson</span>
+                                            <span class="post-card-excerpt">Embracing the vibrant hues of the modern web. The gradient trends are here to stay, bringing life and energy to our digital experiences.</span>
+
+                                            <div class="insta-tags">
+                                                <span class="insta-tag">#Design</span>
+                                                <span class="insta-tag">#WebDev</span>
+                                                <span class="insta-tag">#Vibrant</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </article>
+
+                            <!-- Mock Post Card 2 -->
+                            <article class="post-card">
+                                <div class="insta-header">
+                                    <div class="insta-author-wrapper">
+                                        <a href="#" class="insta-author-link">
+                                            <img class="insta-avatar" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Avatar" />
+                                            <span class="insta-username">Alex Rivera</span>
+                                        </a>
+                                        <span class="insta-meta-dot">&bull;</span>
+                                        <time class="insta-date">Oct 10</time>
+                                    </div>
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+
+                                <a class="post-card-image-link" href="#">
+                                    <img class="post-card-image" style="position:relative; width:100%; height:auto; display:block;" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Abstract Art" />
+                                </a>
+
+                                <div class="post-card-content">
+                                    <a class="post-card-content-link" href="#">
+                                        <div class="insta-caption-container">
+                                            <span class="insta-caption-username">Alex Rivera</span>
+                                            <span class="post-card-excerpt">Fluid shapes and glassmorphism. A look into how we can create depth and texture in user interfaces without overwhelming the content.</span>
+
+                                            <div class="insta-tags">
+                                                <span class="insta-tag">#UI</span>
+                                                <span class="insta-tag">#UX</span>
+                                                <span class="insta-tag">#Glassmorphism</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </main>
+               </div>
+               <div class="column column-2">
+                    <div class="sidebar">
+                        <div class="segment">
+                            <h3 class="site-subtitle">Vibrant<br>Modern<br>Ghost.</h3>
+                            <p style="margin-top:20px; color:var(--color-midgrey);">A fresh take on the classic Casper theme, featuring modern typography, vibrant gradients, and an Instagram-inspired layout.</p>
+                        </div>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
