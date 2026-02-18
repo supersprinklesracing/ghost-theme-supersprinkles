@@ -19,33 +19,45 @@
 .gh-head-menu .nav-instagram a::before {content: "\f16d"}
 .gh-head-menu .nav-slack a::before {content: "\f198"}
 
-/* --- End --- */
+/* --- Vibrant Layout & Typography --- */
 
-/* Two columns: https://devpractical.com/two-column-layout-html-css/#:~:text=2.%20Create%20Sidebar%20Layout%3A%20Two%20column%20layout */
+:root {
+    --color-primary: #6366f1; /* Indigo 500 */
+    --color-secondary: #ec4899; /* Pink 500 */
+    --gradient-brand: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+    --gradient-bg: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+body {
+    background: var(--gradient-bg);
+    min-height: 100vh;
+}
+
+.site-main {
+    padding-bottom: 4rem;
+}
+
 .columns {
-    Width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    width: 100%;
 }
 
 .column-1 {
-    width: 70%;
-    float: left;
+    width: auto;
+    float: none;
 }
 
 .column-2 {
-    width: 30%;
-    float: left;
-    padding: 0 max(4vmin, 20px)
+    width: auto;
+    float: none;
+    padding: 0;
 }
 
-.columns {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-@media (max-width: 1200px) {
-    .column-1 {
-        width: 100%;
+@media (max-width: 1000px) {
+    .columns {
+        grid-template-columns: 1fr;
     }
     .column-2 {
         display: none;
@@ -63,16 +75,23 @@
   font-size: 8rem;
   font-weight: 600;
   line-height: 1.1;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-
-
-/* --- End --- */
 
 /* Scrim the menu for the main page header. */
 #gh-head {
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1); /* Subtle indigo border */
 }
-/* --- End --- */
+
+.dark-mode #gh-head {
+    background-color: rgba(15, 23, 42, 0.7);
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+}
 
 /** Hack to make the menu burger icon white on dark backgrounds. */
 @media (prefers-color-scheme: dark) {
@@ -82,130 +101,196 @@
         background-color: gray;
     }
 }
-/* --- End --- */
 
-/* --- Instagram-style Feed Customizations --- */
+/* --- Feed Customizations --- */
 
-/* Adjust Single Post spacing */
-.article-header {
-    padding-bottom: 2rem;
+.post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0;
 }
 
-.article-byline {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--color-border);
+/* Modern Vibrant Card Style */
+.post-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(99, 102, 241, 0.1); /* Subtle indigo tint */
+    box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    margin-bottom: 0; /* Remove default margin */
 }
 
-/* Ensure the byline looks good without the title above it */
-.article-byline-content {
-    align-items: center;
+.dark-mode .post-card {
+    background: var(--color-darkgrey);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: none;
 }
 
-/* --- Instagram-style Post Card --- */
+.post-card:hover {
+    transform: translateY(-4px) scale(1.005);
+    box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.15), 0 8px 10px -6px rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+}
 
 .insta-header {
     display: flex;
     align-items: center;
-    padding: 12px 0;
+    justify-content: space-between;
+    padding: 16px 20px;
     font-size: 1.4rem;
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+    background: linear-gradient(to right, #ffffff, #fafafa);
+}
+
+.dark-mode .insta-header {
+    border-bottom-color: rgba(255,255,255,0.05);
+    background: transparent;
+}
+
+.insta-author-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .insta-author-link {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-darkgrey);
+    transition: color 0.2s;
+}
+
+.dark-mode .insta-author-link {
+    color: #fff;
 }
 
 .insta-author-link:hover {
-    opacity: 1;
+    color: var(--color-primary);
     text-decoration: none;
 }
 
 .insta-avatar {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2); /* Ring effect */
 }
 
 .insta-avatar-placeholder {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: var(--color-lightgrey);
+    background: var(--gradient-brand);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
 }
 
 .insta-avatar-placeholder svg {
     width: 20px;
     height: 20px;
-    fill: var(--color-midgrey);
+    fill: #fff;
 }
 
 .insta-meta-dot {
-    margin: 0 6px;
+    margin: 0 8px;
     color: var(--color-secondary-text);
+    opacity: 0.5;
 }
 
 .insta-date {
     color: var(--color-secondary-text);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Override existing post-card-image-link spacing */
 .post-card-image-link {
-    margin-bottom: 12px;
-    border-radius: 4px; /* Slight rounding like Insta */
-    overflow: hidden;
+    margin-bottom: 0;
+    border-radius: 0;
+    display: block;
+    position: relative;
 }
 
-/* Make image cover full width effectively */
 .post-card-image-link::after {
-    padding-bottom: 100%; /* Make square by default like Insta? Or maybe just adapt to image */
+    padding-bottom: 60%; /* More cinematic aspect ratio */
 }
-/* If we want natural aspect ratio, we'd need to remove the padding-bottom hack or adjust classes. 
-   But Ghost's Casper uses this padding hack for consistent cards. 
-   Let's stick to the existing image behavior for now but remove the margin bottom. 
-*/
 
 .insta-caption-container {
-    font-size: 1.4rem;
-    line-height: 1.5;
+    padding: 20px;
+    font-size: 1.6rem;
+    line-height: 1.6;
     color: var(--color-darkgrey);
-    margin-bottom: 8px;
+}
+
+.dark-mode .insta-caption-container {
+    color: rgba(255,255,255,0.9);
 }
 
 .insta-caption-username {
-    font-weight: 700;
-    margin-right: 6px;
+    font-weight: 800;
+    margin-right: 8px;
     color: var(--color-darkgrey);
+}
+
+.dark-mode .insta-caption-username {
+    color: #fff;
 }
 
 .post-card-excerpt {
-    display: inline; /* Make excerpt inline with username */
-    font-size: 1.4rem; /* Reset size to match caption style */
-    -webkit-line-clamp: unset; /* Remove clamp here, let it flow or clamp differently */
-    margin-top: 0;
-    color: var(--color-darkgrey);
+    display: inline;
+    font-family: var(--font-sans);
+    color: inherit;
 }
 
 .insta-tags {
-    margin-top: 8px;
+    margin-top: 16px;
     font-size: 1.3rem;
-    color: var(--ghost-accent-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .insta-tag {
-    margin-right: 6px;
+    margin-right: 0;
+    color: #fff;
+    background: var(--gradient-brand);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.insta-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.3);
 }
 
 /* Hide original tags and footer */
 .post-card-tags {
     display: none;
+}
+
+/* Modern Button Style (if used) */
+.gh-head-button {
+    background: var(--gradient-brand);
+    border: none;
+    box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gh-head-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(99, 102, 241, 0.4);
+    opacity: 1; /* Reset default opacity change */
 }
