@@ -124,14 +124,7 @@
                 ],
                 "default": "Modern sans-serif"
             },
-            "signup_heading": {
-                "type": "text",
-                "description": "Used in your footer across your theme, defaults to site title when empty"
-            },
-            "signup_subheading": {
-                "type": "text",
-                "description": "Defaults to site description when empty"
-            },
+
             "header_style": {
                 "type": "select",
                 "options": [
@@ -151,13 +144,7 @@
                 "description": "Defaults to site description when empty",
                 "visibility": "header_style:[Landing, Search]"
             },
-            "background_image": {
-                "type": "boolean",
-                "default": true,
-                "description": "Use the publication cover set on the Brand tab as your background",
-                "group": "homepage",
-                "visibility": "header_style:[Landing, Search]"
-            },
+
             "show_featured_posts": {
                 "type": "boolean",
                 "default": false,
