@@ -3,11 +3,12 @@ const pump = require('pump');
 const path = require('path');
 const releaseUtils = require('@tryghost/release-utils');
 const inquirer = require('inquirer');
+const {mergeLocales} = require('@tryghost/theme-translations/build');
 
 // gulp plugins and utils
 const livereload = require('gulp-livereload');
 const postcss = require('gulp-postcss');
-const zip = require('gulp-zip');
+const zip = require('gulp-zip').default;
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const beeper = require('beeper');
@@ -15,12 +16,11 @@ const fs = require('fs');
 
 // postcss plugins
 const autoprefixer = require('autoprefixer');
-const colorFunction = require('postcss-color-mod-function');
 const cssnano = require('cssnano');
 const easyimport = require('postcss-easy-import');
 
-const REPO = 'TryGhost/Casper';
-const REPO_READONLY = 'TryGhost/Casper';
+const REPO = 'TryGhost/Source';
+const REPO_READONLY = 'TryGhost/Source';
 const CHANGELOG_PATH = path.join(process.cwd(), '.', 'changelog.md');
 
 function serve(done) {
@@ -46,10 +46,9 @@ function hbs(done) {
 
 function css(done) {
     pump([
-        src('assets/css/*.css', {sourcemaps: true}),
+        src('assets/css/screen.css', {sourcemaps: true}),
         postcss([
             easyimport,
-            colorFunction(),
             autoprefixer(),
             cssnano()
         ]),
@@ -65,7 +64,7 @@ function js(done) {
             'assets/js/lib/*.js',
             'assets/js/*.js'
         ], {sourcemaps: true}),
-        concat('casper.js'),
+        concat('source.js'),
         uglify(),
         dest('assets/built/', {sourcemaps: '.'}),
         livereload()
@@ -92,8 +91,9 @@ function zipper(done) {
 const cssWatcher = () => watch('assets/css/**', css);
 const jsWatcher = () => watch('assets/js/**', js);
 const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
-const watcher = parallel(cssWatcher, jsWatcher, hbsWatcher);
-const build = series(css, js);
+const localesWatcher = () => watch('./locales-local/**/*.json', mergeLocales());
+const watcher = parallel(cssWatcher, jsWatcher, hbsWatcher, localesWatcher);
+const build = series(css, js, mergeLocales());
 
 exports.build = build;
 exports.zip = series(build, zipper);
@@ -120,17 +120,18 @@ exports.release = async () => {
     }
 
     try {
-        const result = await inquirer.prompt([{
+        const prompt = inquirer.createPromptModule();
+        const result = await prompt([{
             type: 'input',
             name: 'compatibleWithGhost',
             message: 'Which version of Ghost is it compatible with?',
-            default: '5.0.0'
+            default: '5.67.0'
         }]);
 
         const compatibleWithGhost = result.compatibleWithGhost;
 
         const releasesResponse = await releaseUtils.releases.get({
-            userAgent: 'Casper',
+            userAgent: 'Source',
             uri: `https://api.github.com/repos/${REPO_READONLY}/releases`
         });
 
@@ -160,7 +161,7 @@ exports.release = async () => {
             preRelease: false,
             tagName: 'v' + newVersion,
             releaseName: newVersion,
-            userAgent: 'Casper',
+            userAgent: 'Source',
             uri: `https://api.github.com/repos/${REPO}/releases`,
             github: {
                 token: githubToken

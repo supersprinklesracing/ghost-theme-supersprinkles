@@ -1,0 +1,34 @@
+<footer class="gh-footer{{#match @custom.header_and_footer_color "Accent color"}} has-accent-color{{/match}} gh-outer">
+    <div class="gh-footer-inner gh-inner">
+
+
+
+        <div class="gh-social-links">
+            {{#social_accounts @site}}
+                <a href="{{href}}" target="_blank" rel="noopener" aria-label="{{name}}">
+                    {{#> (concat "icons/" type)}}
+                        {{!-- Fallback rendered when no per-platform icon partial exists --}}
+                        <span>{{name}}</span>
+                    {{/undefined}}
+                </a>
+            {{/social_accounts}}
+        </div>
+
+        <div class="gh-footer-bar">
+            <span class="gh-footer-logo is-title">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}">
+                {{else}}
+                    {{@site.title}}
+                {{/if}}
+            </span>
+            <nav class="gh-footer-menu">
+                {{navigation type="secondary"}}
+            </nav>
+            <div class="gh-footer-copyright">
+                {{{t "Powered by {ghostlink}" ghostlink="<a href=\"https://ghost.org/\" target=\"_blank\" rel=\"noopener\">Ghost</a>"}}}
+            </div>
+        </div>
+
+    </div>
+</footer>
